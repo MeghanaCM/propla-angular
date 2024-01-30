@@ -1,0 +1,23 @@
+.learnMore-btn{
+    padding: 1.2vw 4vw;
+}
+.learnMore-btn:hover{
+    background-color: #F72B60 !important;
+    // color: black !important;
+}
+
+@media screen and (max-width:599px){
+    .portfolio-section{
+        justify-content: center !important;
+        padding: 0 !important;
+    }
+    .left-section{
+        width: 90% !important;
+    }
+    .right-section{
+        justify-content: center !important;
+    }
+    .learnMore-btn{
+        padding: 3vw 5vw;
+    } 
+}

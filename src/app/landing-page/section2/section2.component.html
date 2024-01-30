@@ -1,0 +1,20 @@
+<div class="pb-5 pt-5 ">
+    <div class="d-flex flex-column justify-content-center align-items-center gap-5">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <p class="sub-heading  mar0">Popular <span class="text-green ">job</span> Categories</p>
+            <p class="link mar0">2505 jobs live - 5185 added today</p>
+        </div>
+
+        <div class="d-flex flex-row flex-wrap justify-content-center align-items-center gap-4 pt-2">
+            <div class="card bg-gray d-flex flex-column justify-content-center p-3 gap-3 br-n br-10" 
+                     *ngFor="let item of popularJobCategories">
+                <div class="d-flex flex-row gap-3 align-items-center">
+                    <img [src]="item.image" alt="" width="20%">
+                    <p class="mar0 paragraph fw-600">{{item.heading}}</p>
+                </div>
+                    <p class="mar0 text-gray links">{{item.about}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

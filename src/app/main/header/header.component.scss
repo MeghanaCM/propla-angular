@@ -1,0 +1,36 @@
+.header-list :hover{
+    color: #5BB381 !important;
+}
+.header-list p::after{
+content: '';
+width: 0;
+height: 1px;
+display: block;
+background: #5BB381;
+transition: 0.5s;
+}
+.header-list p:hover::after{
+    color: white;
+    width: 100%;
+}
+.signUp-btn{
+  border: 1px solid gray;
+  padding: 1.2vw 2.5vw;
+}
+.header-list.active{
+  color: #5BB381  !important; 
+}
+
+@media screen and (max-width:599px){
+.logo-img{
+  width: 20% !important;
+}
+.buttons{
+  padding-top: 8vw;
+  width: 50%;
+}
+.navbar-nav{
+  gap: 6vw !important;
+  width: 30%;
+}
+}

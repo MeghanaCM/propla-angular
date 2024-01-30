@@ -1,0 +1,727 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$propla-primary: mat.define-palette(mat.$indigo-palette);
+$propla-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$propla-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$propla-theme: mat.define-light-theme((
+  color: (
+    primary: $propla-primary,
+    accent: $propla-accent,
+    warn: $propla-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($propla-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+$fontConfig: (
+  display-4: mat.define-typography-level(112px, 112px, 300, "Lato", -0.0134em),
+  display-3: mat.define-typography-level(56px, 56px, 400, "Lato", -0.0089em),
+  display-2: mat.define-typography-level(45px, 48px, 400, "Lato", 0em),
+  display-1: mat.define-typography-level(34px, 40px, 400, "Lato", 0.0074em),
+  headline: mat.define-typography-level(24px, 32px, 400, "Lato", 0em),
+  title: mat.define-typography-level(20px, 32px, 500, "Lato", 0.0075em),
+  subheading-2: mat.define-typography-level(16px, 28px, 400, "Lato", 0.0094em),
+  subheading-1: mat.define-typography-level(15px, 24px, 500, "Lato", 0.0067em),
+  body-2: mat.define-typography-level(14px, 24px, 500, "Lato", 0.0179em),
+  body-1: mat.define-typography-level(14px, 20px, 400, "Lato", 0.0179em),
+  button: mat.define-typography-level(14px, 14px, 500, "Lato", 0.0893em),
+  caption: mat.define-typography-level(12px, 20px, 400, "Lato", 0.0333em),
+  input: mat.define-typography-level(inherit, 1.125, 400, "Lato", 1.5px),
+);
+
+// Foreground Elements
+
+// Light Theme Text
+$dark-text: #000000;
+$dark-primary-text: rgba($dark-text, 0.87);
+$dark-accent-text: rgba($dark-primary-text, 0.54);
+$dark-disabled-text: rgba($dark-primary-text, 0.38);
+$dark-dividers: rgba($dark-primary-text, 0.12);
+$dark-focused: rgba($dark-primary-text, 0.12);
+
+$mat-light-theme-foreground: (
+  base: black,
+  divider: $dark-dividers,
+  dividers: $dark-dividers,
+  disabled: $dark-disabled-text,
+  disabled-button: rgba($dark-text, 0.26),
+  disabled-text: $dark-disabled-text,
+  elevation: black,
+  secondary-text: $dark-accent-text,
+  hint-text: $dark-disabled-text,
+  accent-text: $dark-accent-text,
+  icon: $dark-accent-text,
+  icons: $dark-accent-text,
+  text: $dark-primary-text,
+  slider-min: $dark-primary-text,
+  slider-off: rgba($dark-text, 0.26),
+  slider-off-active: $dark-disabled-text,
+);
+
+// Dark Theme text
+$light-text: #ffffff;
+$light-primary-text: $light-text;
+$light-accent-text: rgba($light-primary-text, 0.7);
+$light-disabled-text: rgba($light-primary-text, 0.5);
+$light-dividers: rgba($light-primary-text, 0.12);
+$light-focused: rgba($light-primary-text, 0.12);
+
+$mat-dark-theme-foreground: (
+  base: $light-text,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba($light-text, 0.3),
+  disabled-text: $light-disabled-text,
+  elevation: black,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-accent-text,
+  accent-text: $light-accent-text,
+  icon: $light-text,
+  icons: $light-text,
+  text: $light-text,
+  slider-min: $light-text,
+  slider-off: rgba($light-text, 0.3),
+  slider-off-active: rgba($light-text, 0.3),
+);
+
+// Background config
+// Light bg
+$light-background: #fafafa;
+$light-bg-darker-5: darken($light-background, 5%);
+$light-bg-darker-10: darken($light-background, 10%);
+$light-bg-darker-20: darken($light-background, 20%);
+$light-bg-darker-30: darken($light-background, 30%);
+$light-bg-lighter-5: lighten($light-background, 5%);
+$dark-bg-tooltip: lighten(#2c2c2c, 20%);
+$dark-bg-alpha-4: rgba(#2c2c2c, 0.04);
+$dark-bg-alpha-12: rgba(#2c2c2c, 0.12);
+
+$mat-light-theme-background: (
+  background: $light-background,
+  status-bar: $light-bg-darker-20,
+  app-bar: $light-bg-darker-5,
+  hover: $dark-bg-alpha-4,
+  card: $light-bg-lighter-5,
+  dialog: $light-bg-lighter-5,
+  tooltip: $dark-bg-tooltip,
+  disabled-button: $dark-bg-alpha-12,
+  raised-button: $light-bg-lighter-5,
+  focused-button: $dark-focused,
+  selected-button: $light-bg-darker-20,
+  selected-disabled-button: $light-bg-darker-30,
+  disabled-button-toggle: $light-bg-darker-10,
+  unselected-chip: $light-bg-darker-10,
+  disabled-list-option: $light-bg-darker-10,
+);
+
+// Dark bg
+$dark-background: #2c2c2c;
+$dark-bg-lighter-5: lighten($dark-background, 5%);
+$dark-bg-lighter-10: lighten($dark-background, 10%);
+$dark-bg-lighter-20: lighten($dark-background, 20%);
+$dark-bg-lighter-30: lighten($dark-background, 30%);
+$light-bg-alpha-4: rgba(#fafafa, 0.04);
+$light-bg-alpha-12: rgba(#fafafa, 0.12);
+
+// Background palette for dark themes.
+$mat-dark-theme-background: (
+  background: $dark-background,
+  status-bar: $dark-bg-lighter-20,
+  app-bar: $dark-bg-lighter-5,
+  hover: $light-bg-alpha-4,
+  card: $dark-bg-lighter-5,
+  dialog: $dark-bg-lighter-5,
+  tooltip: $dark-bg-lighter-20,
+  disabled-button: $light-bg-alpha-12,
+  raised-button: $dark-bg-lighter-5,
+  focused-button: $light-focused,
+  selected-button: $dark-bg-lighter-20,
+  selected-disabled-button: $dark-bg-lighter-30,
+  disabled-button-toggle: $dark-bg-lighter-10,
+  unselected-chip: $dark-bg-lighter-20,
+  disabled-list-option: $dark-bg-lighter-10,
+);
+
+// Compute font config
+@include mat.core();
+
+// Theme Config
+
+body {
+  --primary-color: #000000;
+  --primary-lighter-color: #b3b3b3;
+  --primary-darker-color: #000000;
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}
+$mat-primary: (
+  main: #000000,
+  lighter: #b3b3b3,
+  darker: #000000,
+  200: #000000,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+$theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
+
+body {
+  --accent-color: #7a7a7a;
+  --accent-lighter-color: #d7d7d7;
+  --accent-darker-color: #5d5d5d;
+  --text-accent-color: #{$light-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$light-primary-text};
+}
+$mat-accent: (
+  main: #7a7a7a,
+  lighter: #d7d7d7,
+  darker: #5d5d5d,
+  200: #7a7a7a,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+$theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
+
+body {
+  --warn-color: #ff0000;
+  --warn-lighter-color: #ffb3b3;
+  --warn-darker-color: #ff0000;
+  --text-warn-color: #{$light-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+}
+$mat-warn: (
+  main: #ff0000,
+  lighter: #ffb3b3,
+  darker: #ff0000,
+  200: #ff0000,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+$theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
+$theme: (
+  primary: $theme-primary,
+  accent: $theme-accent,
+  warn: $theme-warn,
+  is-dark: true,
+  foreground: $mat-dark-theme-foreground,
+  background: $mat-dark-theme-background,
+);
+$altTheme: (
+  primary: $theme-primary,
+  accent: $theme-accent,
+  warn: $theme-warn,
+  is-dark: false,
+  foreground: $mat-light-theme-foreground,
+  background: $mat-light-theme-background,
+);
+
+// Theme Init
+@include mat.all-component-themes($theme);
+
+.theme-alternate {
+  @include mat.all-component-themes($altTheme);
+}
+
+// Specific component overrides, pieces that are not in line with the general theming
+
+// Handle buttons appropriately, with respect to line-height
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button {
+  padding: 0 1.15em;
+  margin: 0 0.65em;
+  min-width: 3em;
+  line-height: 36.4px;
+}
+
+.mat-standard-chip {
+  padding: 0.5em 0.85em;
+  min-height: 2.5em;
+}
+
+.material-icons {
+  font-size: 24px;
+  font-family: "Material Icons", "Material Icons";
+  .mat-badge-content {
+    font-family: "Lato";
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Lato", sans-serif !important;
+  margin: none !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-primary-l {
+  color: var(--primary-lighter-color) !important;
+}
+
+.text-primary-d {
+  color: var(--primary-darker-color) !important;
+}
+
+.text-accent {
+  color: var(--accent-color) !important;
+}
+
+.text-accent-l {
+  color: var(--accent-lighter-color) !important;
+}
+
+.text-accent-d {
+  color: var(--accent-darker-color) !important;
+}
+
+.text-warn {
+  color: var(--warn-color);
+}
+
+.text-warn-l {
+  color: var(--warn-lighter-color);
+}
+
+.text-warn-d {
+  color: var(--warn-darker-color);
+}
+.text-white {
+  color: white;
+}
+.text-green {
+  color: #5bb381 !important;
+}
+.text-pink{
+    color: #F72B60 !important;
+}
+.text-gray{
+  color: #7A7A7A !important;
+}
+
+//Background colors
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-primary-l {
+  background-color: var(--primary-lighter-color);
+}
+
+.bg-primary-d {
+  background-color: var(--primary-darker-color);
+}
+
+.bg-accent {
+  background-color: var(--accent-color) !important;
+}
+
+.bg-accent-l {
+  background-color: var(--accent-lighter-color);
+}
+
+.bg-accent-d {
+  background-color: var(--accent-darker-color);
+}
+
+.bg-warn {
+  background-color: var(--warn-color);
+}
+
+.bg-warn-l {
+  background-color: var(--warn-lighter-color);
+}
+
+.bg-warn-d {
+  background-color: var(--warn-darker-color);
+}
+
+.bg-white {
+  background-color: var(--white-color);
+}
+.bg-green {
+  background-color: #5bb381 !important;
+}
+.bg-pink{
+    background-color: #F72B60 !important;
+}
+.bg-gray{
+  background-color: #F1F5F9 !important;
+}
+.bg-light-gray {
+  background-color: #EAF2F8;
+}
+//font weights
+.fw-800 {
+  font-weight: 800;
+}
+
+.fw-700 {
+  font-weight: 700 !important;
+}
+
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+//Letter Spacing
+.ls-05 {
+  letter-spacing: 0.5px;
+}
+
+.ls-1 {
+  letter-spacing: 1px;
+}
+
+.ls-2 {
+  letter-spacing: 2px;
+}
+
+.ls-3 {
+  letter-spacing: 3px;
+}
+
+// Text Transforms
+.text-tr-u {
+  text-transform: uppercase;
+}
+
+.text-tr-c {
+  text-transform: capitalize;
+}
+
+.text-tr-l {
+  text-transform: lowercase;
+}
+
+//Text decorations
+.text-d-n {
+  text-decoration: none;
+}
+
+.text-d-lt {
+  text-decoration: line-through;
+}
+
+.text-d-d {
+  text-decoration: dashed;
+}
+
+.text-d-u {
+  text-decoration: underline;
+}
+
+//Text alignments
+.text-a-s {
+  text-align: start;
+}
+
+.text-a-c {
+  text-align: center;
+}
+
+.text-a-e {
+  text-align: end;
+}
+
+.text-a-j {
+  text-align: justify;
+}
+
+//border radius
+.br-n {
+  border: none !important;
+}
+.br-3 {
+  border-radius: 3px !important;
+}
+
+.br-5 {
+  border-radius: 5px;
+}
+
+.br-10 {
+  border-radius: 10px;
+}
+
+.br-50 {
+  border-radius: 50%;
+}
+
+.br-3vw {
+  border-radius: 0.29vw;
+}
+
+.br-10vw {
+  border-radius: 0.97vw;
+}
+.br-gray{
+  border: 1px solid #D6D6D6!important;
+}
+
+//links
+.cursor {
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+.ls-05 {
+  letter-spacing: 0.048vw;
+}
+
+.ls-1 {
+  letter-spacing: 0.09vw;
+}
+
+.ls-2 {
+  letter-spacing: 0.19vw;
+}
+
+.ls-3 {
+  letter-spacing: 0.29vw;
+}
+
+.mat-form-field {
+  font-size: 1.36vw;
+}
+//margin
+.mar0 {
+  margin: 0 !important;
+}
+
+.mar-t-12 {
+  margin-top: 12px !important;
+}
+
+.pad0 {
+  padding: 0px !important;
+}
+
+//width
+.w-95 {
+  width: 95%;
+}
+.w-90 {
+  width: 90%;
+}
+.w-80 {
+  width: 80%;
+}
+.w-70 {
+  width: 70%;
+}
+.w-60 {
+  width: 60%;
+}
+.w-40 {
+  width: 40%;
+}
+.w-45 {
+  width: 48%;
+}
+.w-35 {
+  width: 35%;
+}
+.w-30 {
+  width: 30%;
+}
+.w-25 {
+  width: 25%; 
+}
+.w-35 {
+  width:35vw;
+}
+.w-23{
+  width: 23vw;
+}
+.w-20 {
+  width:20vw;
+}
+.w-21 {
+  width: 20.6vw;
+}
+.w-18 {
+  width:18vw
+}
+.w-10 {
+  width: 10%;
+}
+
+// font sizes
+
+.heading {
+  font-size: 3.5vw !important; //60px 
+  line-height: 5.1vw !important; //80px
+}
+.sub-heading {
+  font-size: 2.5vw !important; //40px
+  line-height: 4vw !important; //56px
+}
+.large-paragraph {
+  font-size: 2vw !important; //32px
+  line-height: 3.3vw !important; //44px
+}
+.small-paragraph {
+  font-size: 1.8vw !important; //20px
+  line-height: 1.95vw !important; //20px
+}
+.paragraph {
+  font-size: 1.05vw !important; //16px
+  line-height: 2vw !important; //28px
+}
+.links {
+  font-size: 1vw !important; //14px
+  line-height: 2vw !important;
+}
+.small-links {
+  font-size: 0.9vw !important; //12px
+  line-height: normal !important;
+}
+
+@media screen and (max-width: 599px) {
+  .heading {
+    font-size: 25px !important;
+    line-height: normal !important;
+  }
+  .sub-heading {
+    font-size: 22px !important;
+    line-height: normal !important;
+  }
+  .large-paragraph {
+    font-size: 20px !important;
+    line-height: normal !important;
+  }
+  .small-paragraph {
+    font-size: 16px !important;
+    line-height: normal !important;
+  }
+  .paragraph {
+    font-size: 13px !important;
+    line-height: normal !important;
+  }
+  .links {
+    font-size: 11px !important;
+    line-height: normal !important;
+  }
+  .small-links {
+    font-size: 9px !important;
+    line-height: normal !important;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1020px) {
+  .heading {
+    font-size: 30px !important;
+    line-height: normal !important;
+  }
+  .sub-heading {
+    font-size: 26px !important;
+    line-height: normal !important;
+  }
+  .large-paragraph {
+    font-size: 24px !important;
+    line-height: normal !important;
+  }
+  .small-paragraph {
+    font-size: 20px !important;
+    line-height: normal !important;
+  }
+  .paragraph {
+    font-size: 16px !important;
+    line-height: normal !important;
+  }
+  .links {
+    font-size: 12px !important;
+    line-height: normal !important;
+  }
+  .small-links {
+    font-size: 10px !important;
+    line-height: normal !important;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

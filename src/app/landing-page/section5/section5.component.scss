@@ -1,0 +1,97 @@
+.left-section{
+    background: url(../../../assets/images/about-chat-bg-img.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.left-section{
+    padding-bottom: 12vw;
+    padding-top: 8vw;
+}
+
+//carousel
+
+.carousel {
+    width: 80% !important;
+}
+// .carousel-indicators [data-bs-target]
+// {
+//     // width: 15% !important;
+//     // height: 7vh !important;
+//     // background: transparent;
+// }
+
+//   .active-profile {
+//     border: 2px solid #104e13; /* Highlight color */
+//   }
+//   .carousel-indicators .active {
+//     opacity: 1;
+//     border: 3px solid green;
+//     border-radius: 30px;
+// }
+
+.carousel-indicators{
+    top: 20vw;
+}
+.carousel-indicators img {
+    width: 5vw; 
+    height: 5vw; 
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+.carousel-indicators img.active{
+    width: 11vw;
+    height: 11vw;
+    opacity: 1;
+}
+.carousel-indicators img.active-1{
+    width: 7vw; 
+    height: 7vw; 
+}
+hr{
+    border-top: 2px solid black;
+    width: 80% !important;
+}
+
+
+@media screen and (max-width: 599px){
+    .left-section{
+        width: 100% !important;
+    }
+    .right-sec{
+        width: 100% !important;
+    }
+    .carousel{
+        width: 90% !important;
+    }
+    .known-main{
+        width: 100% !important;
+    }
+    .carousel-indicators{
+        top: 35vw;
+    } 
+    .main{
+        padding-bottom: 32vw !important;
+    }
+    // .carousel-item p{
+    //     // line-height: 5vw;
+    //     // font-size: 15px;
+    //     // font-weight: 600;
+    // }
+}
+
+@media screen and (min-width: 599px) and (max-width: 1023px){
+    .carousel-indicators{
+        top: 28vw;
+    }
+    .main{
+        padding-bottom: 15vw !important;
+    }
+    .right-sec{
+        padding-top: 0 !important;
+    }
+}
+@media screen and (max-width: 340px){
+    .carousel-indicators{
+        // top: 52vw;
+    }
+}

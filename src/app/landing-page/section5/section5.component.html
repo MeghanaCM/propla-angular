@@ -1,0 +1,53 @@
+<div class="main pt-5 pb-5">
+    <div class="main-sec d-flex flex-row flex-wrap">
+        <div class="left-section w-40 d-flex flex-column justify-content-center align-items-center gap-3 text-center">
+            <img src="../../../assets/images/about-chat-img.png" alt="" width="50%">
+            <p class="fw-500 mar0 sub-heading">What people say about our product?</p>
+        </div>
+
+        <div class="right-sec pt-5 w-60 d-flex flex-column justify-content-centera align-items-center">
+            <div class="right-sec-main d-flex justify-content-center align-items-center">
+                <div class="right-sec-1 d-flex flex-column w-100 ">
+                    <div class="d-flex justify-content-center">
+                        <p class="sub-heading fw-500 mar0 text-center w-80">Help Us to Increase productivity and
+                            provide new experiences</p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-around pt-3">
+                        <div class="carousel slide">
+                            <div class="carousel-inner text-center">
+                                <div class="carousel-item text-gray paragraph" *ngFor="let data of arrayData; let i = index"
+                                    [ngClass]="{'active': i === currentIndex}">
+                                    <p class="text-center" *ngIf="i === currentIndex">{{currentData.content}}</p>
+                                    
+                                    <div class="d-flex justify-content-around align-items-center pt-3"><hr></div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="carousel-indicators d-flex flex-column align-items-center gap-2">
+                                <div class="d-flex flex-row align-items-center gap-4">
+                                <img [src]="arrayData[(currentIndex - 2 + arrayData.length) % arrayData.length].image" alt=""
+                                  (click)="changeCurrentIndex((currentIndex - 2 + arrayData.length) % arrayData.length)">
+                                <img class="active-1" [src]="arrayData[(currentIndex - 1 + arrayData.length) % arrayData.length].image" alt=""
+                                  (click)="changeCurrentIndex((currentIndex - 1 + arrayData.length) % arrayData.length)">
+                                <img class="active" [src]="arrayData[currentIndex].image" alt=""
+                                  (click)="changeCurrentIndex(currentIndex)">
+                                <img class="active-1" [src]="arrayData[(currentIndex + 1) % arrayData.length].image" alt=""
+                                  (click)="changeCurrentIndex((currentIndex + 1) % arrayData.length)">
+                                <img [src]="arrayData[(currentIndex + 2) % arrayData.length].image" alt=""
+                                  (click)="changeCurrentIndex((currentIndex + 2) % arrayData.length)">
+                                </div>
+                                  <div class="d-flex flex-column">
+                                    <p class="large-paragraph text-center mar0 text-pink">{{currentData.heading}}
+                                    </p>
+                                    <p class="paragraph mar0 text-gray">{{currentData.role}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
